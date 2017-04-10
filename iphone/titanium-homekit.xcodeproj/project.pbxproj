@@ -28,9 +28,15 @@
 		24DE9E1211C5FE74003F90F6 /* TiHomekitModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* TiHomekitModuleAssets.m */; };
 		AA747D9F0F9514B9006C5449 /* TiHomekit_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* TiHomekit_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		DB138C431E9C356300A701D9 /* TiHomekitServiceProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = DB138C411E9C356300A701D9 /* TiHomekitServiceProxy.h */; };
+		DB138C441E9C356300A701D9 /* TiHomekitServiceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = DB138C421E9C356300A701D9 /* TiHomekitServiceProxy.m */; };
+		DB138C471E9C362100A701D9 /* TiHomekitRoomProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = DB138C451E9C362100A701D9 /* TiHomekitRoomProxy.h */; };
+		DB138C481E9C362100A701D9 /* TiHomekitRoomProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = DB138C461E9C362100A701D9 /* TiHomekitRoomProxy.m */; };
 		DB44C7111E9C1B1A00D48B8E /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB44C7101E9C1B1A00D48B8E /* HomeKit.framework */; };
-		DBCC5EFF1E9C21610028DC0B /* TiHomekitAccessoryBrowser.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCC5EFD1E9C21610028DC0B /* TiHomekitAccessoryBrowser.h */; };
-		DBCC5F001E9C21610028DC0B /* TiHomekitAccessoryBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCC5EFE1E9C21610028DC0B /* TiHomekitAccessoryBrowser.m */; };
+		DB8F5CD21E9C332200BF7C36 /* TiHomekitAccessoryProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = DB8F5CD01E9C332200BF7C36 /* TiHomekitAccessoryProxy.h */; };
+		DB8F5CD31E9C332200BF7C36 /* TiHomekitAccessoryProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8F5CD11E9C332200BF7C36 /* TiHomekitAccessoryProxy.m */; };
+		DBCC5EFF1E9C21610028DC0B /* TiHomekitAccessoryBrowserProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCC5EFD1E9C21610028DC0B /* TiHomekitAccessoryBrowserProxy.h */; };
+		DBCC5F001E9C21610028DC0B /* TiHomekitAccessoryBrowserProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCC5EFE1E9C21610028DC0B /* TiHomekitAccessoryBrowserProxy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,9 +58,15 @@
 		AA747D9E0F9514B9006C5449 /* TiHomekit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiHomekit_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libti.homekit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libti.homekit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB138C411E9C356300A701D9 /* TiHomekitServiceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiHomekitServiceProxy.h; path = Classes/TiHomekitServiceProxy.h; sourceTree = "<group>"; };
+		DB138C421E9C356300A701D9 /* TiHomekitServiceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiHomekitServiceProxy.m; path = Classes/TiHomekitServiceProxy.m; sourceTree = "<group>"; };
+		DB138C451E9C362100A701D9 /* TiHomekitRoomProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiHomekitRoomProxy.h; path = Classes/TiHomekitRoomProxy.h; sourceTree = "<group>"; };
+		DB138C461E9C362100A701D9 /* TiHomekitRoomProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiHomekitRoomProxy.m; path = Classes/TiHomekitRoomProxy.m; sourceTree = "<group>"; };
 		DB44C7101E9C1B1A00D48B8E /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
-		DBCC5EFD1E9C21610028DC0B /* TiHomekitAccessoryBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiHomekitAccessoryBrowser.h; path = Classes/TiHomekitAccessoryBrowser.h; sourceTree = "<group>"; };
-		DBCC5EFE1E9C21610028DC0B /* TiHomekitAccessoryBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiHomekitAccessoryBrowser.m; path = Classes/TiHomekitAccessoryBrowser.m; sourceTree = "<group>"; };
+		DB8F5CD01E9C332200BF7C36 /* TiHomekitAccessoryProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiHomekitAccessoryProxy.h; path = Classes/TiHomekitAccessoryProxy.h; sourceTree = "<group>"; };
+		DB8F5CD11E9C332200BF7C36 /* TiHomekitAccessoryProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiHomekitAccessoryProxy.m; path = Classes/TiHomekitAccessoryProxy.m; sourceTree = "<group>"; };
+		DBCC5EFD1E9C21610028DC0B /* TiHomekitAccessoryBrowserProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiHomekitAccessoryBrowserProxy.h; path = Classes/TiHomekitAccessoryBrowserProxy.h; sourceTree = "<group>"; };
+		DBCC5EFE1E9C21610028DC0B /* TiHomekitAccessoryBrowserProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TiHomekitAccessoryBrowserProxy.m; path = Classes/TiHomekitAccessoryBrowserProxy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,12 +113,12 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				24DE9E0F11C5FE74003F90F6 /* TiHomekitModuleAssets.h */,
-				24DE9E1011C5FE74003F90F6 /* TiHomekitModuleAssets.m */,
 				24DD6CF71134B3F500162E58 /* TiHomekitModule.h */,
 				24DD6CF81134B3F500162E58 /* TiHomekitModule.m */,
-				DBCC5EFD1E9C21610028DC0B /* TiHomekitAccessoryBrowser.h */,
-				DBCC5EFE1E9C21610028DC0B /* TiHomekitAccessoryBrowser.m */,
+				DB138C4C1E9C36EB00A701D9 /* Accessory Browser */,
+				DB138C4B1E9C36E400A701D9 /* Accessory */,
+				DB138C491E9C36DB00A701D9 /* Service */,
+				DB138C4A1E9C36E000A701D9 /* Room */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -114,10 +126,48 @@
 		32C88DFF0371C24200C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				24DE9E0F11C5FE74003F90F6 /* TiHomekitModuleAssets.h */,
+				24DE9E1011C5FE74003F90F6 /* TiHomekitModuleAssets.m */,
 				AA747D9E0F9514B9006C5449 /* TiHomekit_Prefix.pch */,
 				24DD6D1B1134B66800162E58 /* titanium.xcconfig */,
 			);
 			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		DB138C491E9C36DB00A701D9 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				DB138C411E9C356300A701D9 /* TiHomekitServiceProxy.h */,
+				DB138C421E9C356300A701D9 /* TiHomekitServiceProxy.m */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		DB138C4A1E9C36E000A701D9 /* Room */ = {
+			isa = PBXGroup;
+			children = (
+				DB138C451E9C362100A701D9 /* TiHomekitRoomProxy.h */,
+				DB138C461E9C362100A701D9 /* TiHomekitRoomProxy.m */,
+			);
+			name = Room;
+			sourceTree = "<group>";
+		};
+		DB138C4B1E9C36E400A701D9 /* Accessory */ = {
+			isa = PBXGroup;
+			children = (
+				DB8F5CD01E9C332200BF7C36 /* TiHomekitAccessoryProxy.h */,
+				DB8F5CD11E9C332200BF7C36 /* TiHomekitAccessoryProxy.m */,
+			);
+			name = Accessory;
+			sourceTree = "<group>";
+		};
+		DB138C4C1E9C36EB00A701D9 /* Accessory Browser */ = {
+			isa = PBXGroup;
+			children = (
+				DBCC5EFD1E9C21610028DC0B /* TiHomekitAccessoryBrowserProxy.h */,
+				DBCC5EFE1E9C21610028DC0B /* TiHomekitAccessoryBrowserProxy.m */,
+			);
+			name = "Accessory Browser";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,10 +177,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB138C431E9C356300A701D9 /* TiHomekitServiceProxy.h in Headers */,
+				DB8F5CD21E9C332200BF7C36 /* TiHomekitAccessoryProxy.h in Headers */,
 				AA747D9F0F9514B9006C5449 /* TiHomekit_Prefix.pch in Headers */,
 				24DD6CF91134B3F500162E58 /* TiHomekitModule.h in Headers */,
+				DB138C471E9C362100A701D9 /* TiHomekitRoomProxy.h in Headers */,
 				24DE9E1111C5FE74003F90F6 /* TiHomekitModuleAssets.h in Headers */,
-				DBCC5EFF1E9C21610028DC0B /* TiHomekitAccessoryBrowser.h in Headers */,
+				DBCC5EFF1E9C21610028DC0B /* TiHomekitAccessoryBrowserProxy.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,8 +257,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB138C481E9C362100A701D9 /* TiHomekitRoomProxy.m in Sources */,
+				DB8F5CD31E9C332200BF7C36 /* TiHomekitAccessoryProxy.m in Sources */,
+				DB138C441E9C356300A701D9 /* TiHomekitServiceProxy.m in Sources */,
 				24DD6CFA1134B3F500162E58 /* TiHomekitModule.m in Sources */,
-				DBCC5F001E9C21610028DC0B /* TiHomekitAccessoryBrowser.m in Sources */,
+				DBCC5F001E9C21610028DC0B /* TiHomekitAccessoryBrowserProxy.m in Sources */,
 				24DE9E1211C5FE74003F90F6 /* TiHomekitModuleAssets.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

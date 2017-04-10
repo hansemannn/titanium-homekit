@@ -8,10 +8,20 @@
 
 #import <HomeKit/HomeKit.h>
 
-@interface TiHomekitAccessoryBrowser : TiProxy<HMAccessoryBrowserDelegate> {
+@interface TiHomekitServiceProxy : TiProxy {
 
 }
 
-@property(nonatomic, strong) HMAccessoryBrowser *browser;
+@property(nonatomic, strong) HMService *service;
+
+- (id)_initWithPageContext:(id<TiEvaluator>)context andService:(HMService *)service;
+
+- (id)name;
+
+- (id)localizedDescription;
+
+- (id)serviceType;
+
+- (id)uniqueIdentifier;
 
 @end

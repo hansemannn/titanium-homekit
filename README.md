@@ -21,7 +21,7 @@ Edit the modules section of your `tiapp.xml` file to include this module:
 </modules>
 ```
 
-## API
+## Supported API's
 
 ### Top-Module
 
@@ -49,6 +49,40 @@ Edit the modules section of your `tiapp.xml` file to include this module:
 #### Events
 - [x] `didFindNewAccessory`
 - [x] `didRemoveNewAccessory`
+
+### Accessory
+
+#### Properties
+- [x] `uniqueIdentifier`
+- [x] `name`
+- [x] `isReachable`
+- [x] `isBridged`
+- [x] `isBlocked`
+- [x] `room`
+- [x] `services`
+
+#### Events
+- [x] `didUpdateName`
+- [x] `didUpdateNameForService`
+- [x] `didUpdateAssociatedServiceTypeForService`
+- [x] `didUpdateServices`
+- [x] `didUpdateReachability`
+- [x] `didUpdateValueForCharacteristic`
+
+### Service
+
+#### Properties
+- [x] `uniqueIdentifier`
+- [x] `name`
+- [x] `serviceType`
+- [x] `localizedDescription`
+
+### Room
+
+#### Properties
+- [x] `uniqueIdentifier`
+- [x] `name`
+- [x] `accessories`
 
 ## Author
 Hans Knoechel ([@hansemannnn](https://twitter.com/hansemannnn) / [Web](http://hans-knoechel.de))

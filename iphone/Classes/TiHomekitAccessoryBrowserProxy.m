@@ -5,9 +5,10 @@
  * Please see the LICENSE included with this distribution for details.
  */
 
-#import "TiHomekitAccessoryBrowser.h"
+#import "TiHomekitAccessoryBrowserProxy.h"
+#import "TiHomekitAccessoryProxy.h"
 
-@implementation TiHomekitAccessoryBrowser
+@implementation TiHomekitAccessoryBrowserProxy
 
 - (HMAccessoryBrowser *)browser
 {
@@ -34,13 +35,7 @@
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:[[self browser] discoveredAccessories]];
     
     for (HMAccessory *accessory in [[self browser] discoveredAccessories]) {
-        [result addObject:@{
-            @"uniqueIdentifier": accessory.uniqueIdentifier.UUIDString,
-            @"name": accessory.name,
-            @"bridged": NUMBOOL(accessory.isBridged),
-            @"reachable": NUMBOOL(accessory.isReachable),
-            // TODO: Expose all properties
-        }];
+        [result addObject:[[TiHomekitAccessoryProxy alloc] _initWithPageContext:[self pageContext] andAccessory:accessory]];
     }
     
     return result;
@@ -51,14 +46,14 @@
 - (void)accessoryBrowser:(HMAccessoryBrowser *)browser didFindNewAccessory:(HMAccessory *)accessory
 {
     if ([self _hasListeners:@"didFindNewAccessory"]) {
-        [self fireEvent:@"didFindNewAccessory" withObject:@{@"accessory": @{@"name": accessory.name, @"uniqueIdentifier": accessory.uniqueIdentifier.UUIDString}}];
+        [self fireEvent:@"didFindNewAccessory" withObject:@{@"accessory": [[TiHomekitAccessoryProxy alloc] _initWithPageContext:[self pageContext] andAccessory:accessory]}];
     }
 }
 
 - (void)accessoryBrowser:(HMAccessoryBrowser *)browser didRemoveNewAccessory:(HMAccessory *)accessory
 {
     if ([self _hasListeners:@"didRemoveNewAccessory"]) {
-        [self fireEvent:@"didRemoveNewAccessory" withObject:@{@"accessory": @{@"name": accessory.name, @"uniqueIdentifier": accessory.uniqueIdentifier.UUIDString}}];
+        [self fireEvent:@"didRemoveNewAccessory" withObject:@{@"accessory": [[TiHomekitAccessoryProxy alloc] _initWithPageContext:[self pageContext] andAccessory:accessory]}];
     }
 }
 
