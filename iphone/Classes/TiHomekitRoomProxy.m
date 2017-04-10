@@ -42,4 +42,24 @@
     return result;
 }
 
+- (void)updateName:(id)args
+{
+    NSString *name;
+    KrollCallback *callback;
+    
+    ENSURE_ARG_AT_INDEX(name, args, 0, NSString);
+    ENSURE_ARG_AT_INDEX(callback, args, 0, KrollCallback);
+    
+    [_room updateName:name completionHandler:^(NSError *error) {
+        NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:@{@"success": NUMBOOL(error == nil)}];
+        
+        if (error != nil) {
+            [event setObject:[error localizedDescription] forKey:@"error"];
+        }
+        
+        NSArray *invocation = [NSArray arrayWithObjects:event, nil];
+        [callback call:invocation thisObject:self];
+    }];
+}
+
 @end

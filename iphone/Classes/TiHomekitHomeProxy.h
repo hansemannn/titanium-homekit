@@ -8,19 +8,15 @@
 
 #import <HomeKit/HomeKit.h>
 
-@interface TiHomekitRoomProxy : TiProxy {
+@interface TiHomekitHomeProxy : TiProxy<HMHomeDelegate>
 
-}
+@property(nonatomic, strong) HMHome *home;
 
-@property(nonatomic, strong) HMRoom *room;
-
-- (id)_initWithPageContext:(id<TiEvaluator>)context andRoom:(HMRoom *)room;
-
-- (id)name;
+- (id)_initWithPageContext:(id<TiEvaluator>)context andHome:(HMHome *)home;
 
 - (id)uniqueIdentifier;
 
-- (NSArray *)accessories;
+- (id)name;
 
 - (void)updateName:(id)args;
 
