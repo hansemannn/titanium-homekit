@@ -1,0 +1,18 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 1.0.0
+apiversion: 2
+architectures: armv7 arm64 i386 x86_64
+description: titanium-homekit
+author: Hans Knoechel
+license: Apache 2
+copyright: Copyright (c) 2017 by Hans Knoechel
+
+# these should not be edited
+name: titanium-homekit
+moduleid: ti.homekit
+guid: 25660038-54d6-4f82-8dde-669e6da337cf
+platform: iphone
+minsdk: 5.5.0.GA
