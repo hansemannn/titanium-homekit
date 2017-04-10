@@ -1,9 +1,7 @@
 # iOS HomeKit in Appcelerator Titanium
-   
-## Summary
 Ti.HomeKit is an open-source project to support the HomeKit API in Appcelerator's Titanium. 
-Requirements
----------------
+
+## Requirements
   - Titanium Mobile SDK 5.5.1.GA or later
   - iOS 7.1 or later
   - Xcode 7.3 or later
