@@ -6,6 +6,9 @@
  */
 
 #import "TiHomekitHomeProxy.h"
+#import "TiHomekitAccessoryProxy.h"
+#import "TiHomekitRoomProxy.h"
+#import "TiHomekitUserProxy.h"
 
 @implementation TiHomekitHomeProxy
 
@@ -19,7 +22,9 @@
     return self;
 }
 
-#pragma mark Public API's
+#pragma mark - Public API's
+
+#pragma mark Properties
 
 - (id)uniqueIdentifier
 {
@@ -36,6 +41,8 @@
     return NUMBOOL([_home isPrimary]);
 }
 
+#pragma mark Methods
+
 - (void)updateName:(id)args
 {
     NSString *name;
@@ -44,6 +51,8 @@
     ENSURE_ARG_AT_INDEX(name, args, 0, NSString);
     ENSURE_ARG_AT_INDEX(callback, args, 0, KrollCallback);
     
+    __weak TiHomekitHomeProxy *weakSelf = self;
+
     [_home updateName:name completionHandler:^(NSError *error) {
         NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:@{@"success": NUMBOOL(error == nil)}];
         
@@ -52,12 +61,219 @@
         }
         
         NSArray *invocation = [NSArray arrayWithObjects:event, nil];
-        [callback call:invocation thisObject:self];
-
+        [callback call:invocation thisObject:weakSelf];
     }];
 }
 
-#pragma mark Delegates
+#pragma mark Handle Accessories
+
+- (void)addAccessory:(id)args
+{
+    TiHomekitAccessoryProxy *accessory;
+    KrollCallback *callback;
+    
+    ENSURE_ARG_AT_INDEX(accessory, args, 0, TiHomekitAccessoryProxy);
+    ENSURE_ARG_AT_INDEX(callback, args, 0, KrollCallback);
+    
+    __weak TiHomekitHomeProxy *weakSelf = self;
+    
+    [_home addAccessory:[accessory accessory] completionHandler:^(NSError *error) {
+        NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:@{@"success": NUMBOOL(error == nil)}];
+        
+        if (error != nil) {
+            [event setObject:[error localizedDescription] forKey:@"error"];
+        }
+        
+        NSArray *invocation = [NSArray arrayWithObjects:event, nil];
+        [callback call:invocation thisObject:weakSelf];
+    }];
+}
+
+- (void)removeAccessory:(id)args
+{
+    TiHomekitAccessoryProxy *accessory;
+    KrollCallback *callback;
+    
+    ENSURE_ARG_AT_INDEX(accessory, args, 0, TiHomekitAccessoryProxy);
+    ENSURE_ARG_AT_INDEX(callback, args, 0, KrollCallback);
+    
+    __weak TiHomekitHomeProxy *weakSelf = self;
+    
+    [_home removeAccessory:[accessory accessory] completionHandler:^(NSError *error) {
+        NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:@{@"success": NUMBOOL(error == nil)}];
+        
+        if (error != nil) {
+            [event setObject:[error localizedDescription] forKey:@"error"];
+        }
+        
+        NSArray *invocation = [NSArray arrayWithObjects:event, nil];
+        [callback call:invocation thisObject:weakSelf];
+    }];
+}
+
+- (void)assignAccessory:(id)args
+{
+    ENSURE_SINGLE_ARG(args, NSDictionary);
+    
+    TiHomekitAccessoryProxy *accessory;
+    TiHomekitRoomProxy *room;
+    KrollCallback *callback;
+    
+    ENSURE_ARG_FOR_KEY(accessory, args, @"accessory", TiHomekitAccessoryProxy);
+    ENSURE_ARG_FOR_KEY(room, args, @"room", TiHomekitHomeProxy);
+    ENSURE_ARG_FOR_KEY(callback, args, @"callback", KrollCallback);
+    
+    __weak TiHomekitHomeProxy *weakSelf = self;
+    
+    [_home assignAccessory:[accessory accessory]
+                    toRoom:[room room]
+         completionHandler:^(NSError *error) {
+        NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:@{@"success": NUMBOOL(error == nil)}];
+            if (error != nil) {
+                [event setObject:[error localizedDescription] forKey:@"error"];
+            }
+        
+             NSArray *invocation = [NSArray arrayWithObjects:event, nil];
+             [callback call:invocation thisObject:weakSelf];
+    }];
+}
+
+- (void)addAndSetupAccessories:(id)value
+{
+    ENSURE_SINGLE_ARG(value, KrollCallback);
+    
+    __weak TiHomekitHomeProxy *weakSelf = self;
+
+    [_home addAndSetupAccessoriesWithCompletionHandler:^(NSError *error) {
+        NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:@{@"success": NUMBOOL(error == nil)}];
+        if (error != nil) {
+            [event setObject:[error localizedDescription] forKey:@"error"];
+        }
+        
+        NSArray *invocation = [NSArray arrayWithObjects:event, nil];
+        [value call:invocation thisObject:weakSelf];
+    }];
+}
+
+#pragma mark Handle Users
+
+- (void)manageUsers:(id)value
+{
+    ENSURE_SINGLE_ARG(value, KrollCallback);
+    
+    __weak TiHomekitHomeProxy *weakSelf = self;
+    
+    [_home manageUsersWithCompletionHandler:^(NSError *error) {
+        NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:@{@"success": NUMBOOL(error == nil)}];
+        if (error != nil) {
+            [event setObject:[error localizedDescription] forKey:@"error"];
+        }
+        
+        NSArray *invocation = [NSArray arrayWithObjects:event, nil];
+        [value call:invocation thisObject:weakSelf];
+    }];
+}
+
+- (void)addUser:(id)value
+{
+    ENSURE_SINGLE_ARG(value, KrollCallback);
+    
+    __weak TiHomekitHomeProxy *weakSelf = self;
+    
+    [_home addUserWithCompletionHandler:^(HMUser *user, NSError *error) {
+        NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:@{@"success": NUMBOOL(error == nil)}];
+        if (error != nil) {
+            [event setObject:[error localizedDescription] forKey:@"error"];
+        } else {
+            [event setObject:[[TiHomekitUserProxy alloc] _initWithPageContext:[weakSelf pageContext] andUser:user] forKey:@"user"];
+        }
+        
+        NSArray *invocation = [NSArray arrayWithObjects:event, nil];
+        [value call:invocation thisObject:weakSelf];
+    }];
+}
+
+- (void)removeUser:(id)args
+{
+    TiHomekitUserProxy *user;
+    KrollCallback *callback;
+    
+    ENSURE_ARG_AT_INDEX(user, args, 0, TiHomekitUserProxy);
+    ENSURE_ARG_AT_INDEX(callback, args, 0, KrollCallback);
+    
+    __weak TiHomekitHomeProxy *weakSelf = self;
+    
+    [_home removeUser:[user user] completionHandler:^(NSError *error) {
+        NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:@{@"success": NUMBOOL(error == nil)}];
+        if (error != nil) {
+            [event setObject:[error localizedDescription] forKey:@"error"];
+        }
+        
+        NSArray *invocation = [NSArray arrayWithObjects:event, nil];
+        [callback call:invocation thisObject:weakSelf];
+    }];
+}
+
+- (TiHomekitUserProxy *)currentUser
+{
+    return [[TiHomekitUserProxy alloc] _initWithPageContext:[self pageContext] andUser:[_home currentUser]];
+}
+
+- (id)homeAccessControlForUser:(id)args
+{
+    TiHomekitUserProxy *user;
+    ENSURE_ARG_AT_INDEX(user, args, 0, TiHomekitUserProxy);
+    
+    return @{@"isAdministrator": NUMBOOL([[_home homeAccessControlForUser:[user user]] isAdministrator])};
+}
+
+#pragma mark Handle Rooms
+
+- (void)addRoom:(id)args
+{
+    NSString *name;
+    KrollCallback *callback;
+    
+    ENSURE_ARG_AT_INDEX(name, args, 0, NSString);
+    ENSURE_ARG_AT_INDEX(callback, args, 0, KrollCallback);
+    
+    __weak TiHomekitHomeProxy *weakSelf = self;
+    
+    [_home addRoomWithName:name completionHandler:^(HMRoom *room, NSError *error) {
+        NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:@{@"success": NUMBOOL(error == nil)}];
+        if (error != nil) {
+            [event setObject:[error localizedDescription] forKey:@"error"];
+        } else {
+            [event setObject:[[TiHomekitRoomProxy alloc] _initWithPageContext:[weakSelf pageContext] andRoom:room] forKey:@"room"];
+        }
+        
+        NSArray *invocation = [NSArray arrayWithObjects:event, nil];
+        [callback call:invocation thisObject:weakSelf];
+    }];
+}
+
+- (void)removeRoom:(id)args
+{
+    TiHomekitRoomProxy *room;
+    KrollCallback *callback;
+    
+    ENSURE_ARG_AT_INDEX(room, args, 0, TiHomekitRoomProxy);
+    ENSURE_ARG_AT_INDEX(callback, args, 0, KrollCallback);
+    
+    __weak TiHomekitHomeProxy *weakSelf = self;
+    
+    [_home removeRoom:[room room] completionHandler:^(NSError *error) {
+        NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:@{@"success": NUMBOOL(error == nil)}];
+        if (error != nil) {
+            [event setObject:[error localizedDescription] forKey:@"error"];
+        }
+        
+        NSArray *invocation = [NSArray arrayWithObjects:event, nil];
+        [callback call:invocation thisObject:weakSelf];
+    }];
+}
+
+#pragma mark - Delegates
 
 - (void)homeDidUpdateName:(HMHome *)home
 {

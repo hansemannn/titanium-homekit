@@ -32,7 +32,7 @@
 
 - (NSArray *)discoveredAccessories
 {
-    NSMutableArray *result = [NSMutableArray arrayWithCapacity:[[self browser] discoveredAccessories]];
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:[[[self browser] discoveredAccessories] count]];
     
     for (HMAccessory *accessory in [[self browser] discoveredAccessories]) {
         [result addObject:[[TiHomekitAccessoryProxy alloc] _initWithPageContext:[self pageContext] andAccessory:accessory]];

@@ -8,6 +8,8 @@
 
 #import <HomeKit/HomeKit.h>
 
+@class TiHomekitUserProxy;
+
 @interface TiHomekitHomeProxy : TiProxy<HMHomeDelegate>
 
 @property(nonatomic, strong) HMHome *home;
@@ -19,5 +21,27 @@
 - (id)name;
 
 - (void)updateName:(id)args;
+
+- (void)addAccessory:(id)args;
+
+- (void)removeAccessory:(id)args;
+
+- (void)assignAccessory:(id)args;
+
+- (void)addAndSetupAccessories:(id)value;
+
+- (void)manageUsers:(id)value;
+
+- (void)addUser:(id)value;
+
+- (void)removeUser:(id)value;
+
+- (TiHomekitUserProxy *)currentUser;
+
+- (id)homeAccessControlForUser:(id)args;
+
+- (void)addRoom:(id)value;
+
+- (void)removeRoom:(id)value;
 
 @end

@@ -54,6 +54,8 @@
     ENSURE_ARG_AT_INDEX(name, args, 0, NSString);
     ENSURE_ARG_AT_INDEX(callback, args, 0, KrollCallback);
     
+    __weak TiHomekitModule *weakSelf = self;
+
     [[self homeManager] addHomeWithName:name
                       completionHandler:^(HMHome *home, NSError *error) {
                           NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:@{@"success": NUMBOOL(error == nil)}];
@@ -66,7 +68,7 @@
                           
                           NSArray *invocation = [NSArray arrayWithObjects:event, nil];
                           
-                          [callback call:invocation thisObject:self];
+                          [callback call:invocation thisObject:weakSelf];
                       }];
 }
 
@@ -94,6 +96,8 @@
         return;
     }
     
+    __weak TiHomekitModule *weakSelf = self;
+
     [[self homeManager] removeHome:selectedHome
                  completionHandler:^(NSError *error) {
                      NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:@{@"success": NUMBOOL(error == nil)}];
@@ -103,7 +107,7 @@
                      }
         
                      NSArray *invocation = [NSArray arrayWithObjects:event, nil];
-                     [callback call:invocation thisObject:self];
+                     [callback call:invocation thisObject:weakSelf];
     }];
 }
 
@@ -131,6 +135,8 @@
         return;
     }
     
+    __weak TiHomekitModule *weakSelf = self;
+
     [[self homeManager] updatePrimaryHome:selectedHome
                         completionHandler:^(NSError *error) {
                             NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:@{@"success": NUMBOOL(error == nil)}];
@@ -140,7 +146,7 @@
                             }
                             
                             NSArray *invocation = [NSArray arrayWithObjects:event, nil];
-                            [callback call:invocation thisObject:self];
+                            [callback call:invocation thisObject:weakSelf];
                         }];
 }
 

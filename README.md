@@ -37,6 +37,29 @@ Edit the modules section of your `tiapp.xml` file to include this module:
 - [x] `didUpdateHomes`
 - [x] `didUpdatePrimaryHome`
 
+### Home
+
+#### Properties
+- [x] `uniqueIdentifier`
+- [x] `name`
+
+#### Methods
+- [x] `updateName`
+- [x] `addAccessory`
+- [x] `removeAccessory`
+- [x] `assignAccessory`
+- [x] `addAndSetupAccessories`
+- [x] `manageUsers`
+- [x] `addUser`
+- [x] `removeUser`
+- [x] `currentUser`
+- [x] `homeAccessControlForUser`
+- [x] `addRoom`
+- [x] `removeRoom`
+
+#### Events
+- [ ] (Too many, need to document it somewhen)
+
 ### AccessoryBrowser
 
 #### Methods
@@ -83,6 +106,12 @@ Edit the modules section of your `tiapp.xml` file to include this module:
 - [x] `uniqueIdentifier`
 - [x] `name`
 - [x] `accessories`
+
+### User
+
+#### Properties
+- [x] `uniqueIdentifier`
+- [x] `name`
 
 ## Author
 Hans Knoechel ([@hansemannnn](https://twitter.com/hansemannnn) / [Web](http://hans-knoechel.de))
