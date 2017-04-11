@@ -17,7 +17,7 @@ Unpack the module and place it inside the `modules/iphone/` folder of your proje
 Edit the modules section of your `tiapp.xml` file to include this module:
 ```xml
 <modules>
-  <module platform="iphone">ti.homekit</module>
+    <module platform="iphone">ti.homekit</module>
 </modules>
 ```
 
@@ -27,10 +27,10 @@ Ensure that the HomeKit- and Wireless Configuration capabilities are added to yo
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>com.apple.developer.homekit</key>
-	<true/>
-	<key>com.apple.external-accessory.wireless-configuration</key>
-	<true/>
+    <key>com.apple.developer.homekit</key>
+    <true/>
+    <key>com.apple.external-accessory.wireless-configuration</key>
+    <true/>
 </dict>
 </plist>
 ```
