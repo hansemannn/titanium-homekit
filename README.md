@@ -1,10 +1,10 @@
-# iOS HomeKit in Appcelerator Titanium
+# 🏡 iOS HomeKit in Appcelerator Titanium</h1></td>
 Ti.HomeKit is an open-source project to support the HomeKit API in Appcelerator's Titanium. 
 
 ## Requirements
-  - Titanium Mobile SDK 5.5.1.GA or later
-  - iOS 7.1 or later
-  - Xcode 7.3 or later
+  - Titanium Mobile SDK 5.5.1.GA+
+  - iOS 8.0+
+  - Xcode 7.3+
 
 ## Download + Setup
 
@@ -19,6 +19,27 @@ Edit the modules section of your `tiapp.xml` file to include this module:
 <modules>
     <module platform="iphone">ti.homekit</module>
 </modules>
+```
+
+Ensure that the HomeKit- and Wireless Configuration capabilities are added to your entitlements (example):
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>com.apple.developer.homekit</key>
+    <true/>
+    <key>com.apple.external-accessory.wireless-configuration</key>
+    <true/>
+</dict>
+</plist>
+```
+Also ensure that the HomeKit- and location usage permissions are set in the tiapp.xml
+```xml
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>HMCatalog needs your location to search for relevant places in your area.</string>
+<key>NSHomeKitUsageDescription</key>
+<string>HMCatalog needs access top your HomeKit devices.</string>
 ```
 
 ## Supported API's
