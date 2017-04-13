@@ -152,28 +152,28 @@
 
 #pragma mark Delegates
 
--(void)homeManager:(HMHomeManager *)manager didAddHome:(HMHome *)home
+- (void)homeManager:(HMHomeManager *)manager didAddHome:(HMHome *)home
 {
     if ([self _hasListeners:@"didAddHome"]) {
         [self fireEvent:@"didAddHome" withObject:@{@"home": @{@"uniqueIdentifier": home.uniqueIdentifier.UUIDString}}];
     }
 }
 
--(void)homeManager:(HMHomeManager *)manager didRemoveHome:(HMHome *)home
+- (void)homeManager:(HMHomeManager *)manager didRemoveHome:(HMHome *)home
 {
     if ([self _hasListeners:@"didRemoveHome"]) {
         [self fireEvent:@"didRemoveHome" withObject:@{@"home": @{@"uniqueIdentifier": home.uniqueIdentifier.UUIDString}}];
     }
 }
 
--(void)homeManagerDidUpdateHomes:(HMHomeManager *)manager
+- (void)homeManagerDidUpdateHomes:(HMHomeManager *)manager
 {
     if ([self _hasListeners:@"didUpdateHomes"]) {
         [self fireEvent:@"didUpdateHomes"];
     }
 }
 
--(void)homeManagerDidUpdatePrimaryHome:(HMHomeManager *)manager
+- (void)homeManagerDidUpdatePrimaryHome:(HMHomeManager *)manager
 {
     if ([self _hasListeners:@"didUpdatePrimaryHome"]) {
         [self fireEvent:@"didUpdatePrimaryHome"];

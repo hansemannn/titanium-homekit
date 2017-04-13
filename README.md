@@ -79,7 +79,35 @@ Also ensure that the HomeKit- and location usage permissions are set in the tiap
 - [x] `removeRoom`
 
 #### Events
-- [ ] (Too many, need to document it somewhen)
+- [x] `homeDidUpdateName`
+- [x] `didAddAccessory`
+- [x] `didRemoveAccessory`
+- [x] `didAddUser`
+- [x] `didRemoveUser`
+- [x] `didAddRoom`
+- [x] `didUpdateRoom`
+- [x] `didUpdateNameForRoom`
+- [x] `didRemoveRoom`
+- [x] `didAddZone`
+- [x] `didUpdateNameForZone`
+- [x] `didRemoveZone`
+- [x] `didAddRoomToZone`
+- [x] `didRemoveRoomFromZone`
+- [x] `didAddServiceGroup`
+- [x] `didUpdateNameForServiceGroup`
+- [x] `didRemoveServiceGroup`
+- [x] `didAddServiceToServiceGroup`
+- [x] `didRemoveServiceFromServiceGroup`
+- [x] `didAddActionSet`
+- [x] `didUpdateNameForActionSet`
+- [x] `didUpdateActionsForActionSet`
+- [x] `didAddActionSet`
+- [x] `didAddTrigger`
+- [x] `didUpdateTrigger`
+- [x] `didUpdateNameForTrigger`
+- [x] `didRemoveTrigger`
+- [x] `didUnblockAccessory`
+- [x] `didEncounterErrorForAccessory`
 
 ### AccessoryBrowser
 

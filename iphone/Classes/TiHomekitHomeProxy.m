@@ -277,99 +277,142 @@
 
 - (void)homeDidUpdateName:(HMHome *)home
 {
-    if ([self _hasListeners:@"didFindNewAccessory"]) {
-        [self fireEvent:@"homeDidUpdateName"];
+    if ([self _hasListeners:@"homeDidUpdateName"]) {
+        [self fireEvent:@"homeDidUpdateName" withObject:@{
+            @"home": [[TiHomekitHomeProxy alloc] _initWithPageContext:[self pageContext] andHome:home]
+        }];
     }
 }
 
 - (void)home:(HMHome *)home didAddAccessory:(HMAccessory *)accessory
 {
     if ([self _hasListeners:@"didAddAccessory"]) {
-        [self fireEvent:@"didAddAccessory"];
+        [self fireEvent:@"didAddAccessory" withObject:@{
+            @"accessory": [[TiHomekitAccessoryProxy alloc] _initWithPageContext:[self pageContext] andAccessory:accessory]
+        }];
     }
 }
 
 - (void)home:(HMHome *)home didRemoveAccessory:(HMAccessory *)accessory
 {
     if ([self _hasListeners:@"didRemoveAccessory"]) {
-        [self fireEvent:@"didRemoveAccessory"];
+        [self fireEvent:@"didRemoveAccessory" withObject:@{
+            @"accessory": [[TiHomekitAccessoryProxy alloc] _initWithPageContext:[self pageContext] andAccessory:accessory]
+        }];
     }
 }
 
 - (void)home:(HMHome *)home didAddUser:(HMUser *)user
 {
     if ([self _hasListeners:@"didAddUser"]) {
-        [self fireEvent:@"didAddUser"];
+        [self fireEvent:@"didAddUser" withObject:@{
+            @"user": [[TiHomekitUserProxy alloc] _initWithPageContext:[self pageContext] andUser:user]
+        }];
     }
 }
 
 - (void)home:(HMHome *)home didRemoveUser:(HMUser *)user
 {
     if ([self _hasListeners:@"didRemoveUser"]) {
-        [self fireEvent:@"didRemoveUser"];
+        [self fireEvent:@"didRemoveUser" withObject:@{
+            @"user": [[TiHomekitUserProxy alloc] _initWithPageContext:[self pageContext] andUser:user]
+        }];
     }
 }
 
 - (void)home:(HMHome *)home didUpdateRoom:(HMRoom *)room forAccessory:(HMAccessory *)accessory
 {
     if ([self _hasListeners:@"didUpdateRoom"]) {
-        [self fireEvent:@"didUpdateRoom"];
+        [self fireEvent:@"didUpdateRoom" withObject:@{
+            @"room": [[TiHomekitRoomProxy alloc] _initWithPageContext:[self pageContext] andRoom:room]
+        }];
     }
 }
 
 - (void)home:(HMHome *)home didAddRoom:(HMRoom *)room
 {
     if ([self _hasListeners:@"didAddRoom"]) {
-        [self fireEvent:@"didAddRoom"];
+        [self fireEvent:@"didAddRoom" withObject:@{
+            @"room": [[TiHomekitRoomProxy alloc] _initWithPageContext:[self pageContext] andRoom:room]
+        }];
     }
 }
 
 - (void)home:(HMHome *)home didRemoveRoom:(HMRoom *)room
 {
     if ([self _hasListeners:@"didRemoveRoom"]) {
-        [self fireEvent:@"didRemoveRoom"];
+        [self fireEvent:@"didRemoveRoom" withObject:@{
+            @"room": [[TiHomekitRoomProxy alloc] _initWithPageContext:[self pageContext] andRoom:room]
+        }];
     }
 }
 
 - (void)home:(HMHome *)home didUpdateNameForRoom:(HMRoom *)room
 {
     if ([self _hasListeners:@"didUpdateNameForRoom"]) {
-        [self fireEvent:@"didUpdateNameForRoom"];
+        [self fireEvent:@"didUpdateNameForRoom" withObject:@{
+            @"room": [[TiHomekitRoomProxy alloc] _initWithPageContext:[self pageContext] andRoom:room]
+        }];
     }
 }
 
 - (void)home:(HMHome *)home didAddZone:(HMZone *)zone
 {
     if ([self _hasListeners:@"didAddZone"]) {
-        [self fireEvent:@"didAddZone"];
+        [self fireEvent:@"didAddZone" withObject:@{
+            @"zone": @{
+                @"name": zone.name,
+                @"uniqueIdentifier": zone.uniqueIdentifier
+            }
+        }];
     }
 }
 
 - (void)home:(HMHome *)home didRemoveZone:(HMZone *)zone
 {
     if ([self _hasListeners:@"didRemoveZone"]) {
-        [self fireEvent:@"didRemoveZone"];
+        [self fireEvent:@"didRemoveZone" withObject:@{
+            @"zone": @{
+                @"name": zone.name,
+                @"uniqueIdentifier": zone.uniqueIdentifier
+            }
+        }];
     }
 }
 
 - (void)home:(HMHome *)home didUpdateNameForZone:(HMZone *)zone
 {
     if ([self _hasListeners:@"didUpdateNameForZone"]) {
-        [self fireEvent:@"didUpdateNameForZone"];
+        [self fireEvent:@"didUpdateNameForZone" withObject:@{
+            @"zone": @{
+                @"name": zone.name,
+                @"uniqueIdentifier": zone.uniqueIdentifier
+            }
+        }];
     }
 }
 
 - (void)home:(HMHome *)home didAddRoom:(HMRoom *)room toZone:(HMZone *)zone
 {
-    if ([self _hasListeners:@"didAddRoom"]) {
-        [self fireEvent:@"didAddRoom"];
+    if ([self _hasListeners:@"didAddRoomToZone"]) {
+        [self fireEvent:@"didAddRoomToZone" withObject:@{
+            @"zone": @{
+                @"name": zone.name,
+                @"uniqueIdentifier": zone.uniqueIdentifier
+            }
+        }];
     }
 }
 
 - (void)home:(HMHome *)home didRemoveRoom:(HMRoom *)room fromZone:(HMZone *)zone
 {
-    if ([self _hasListeners:@"didRemoveRoom"]) {
-        [self fireEvent:@"didRemoveRoom"];
+    if ([self _hasListeners:@"didRemoveRoomFromZone"]) {
+        [self fireEvent:@"didRemoveRoomFromZone" withObject:@{
+            @"zone": @{
+                @"name": zone.name,
+                @"uniqueIdentifier": zone.uniqueIdentifier
+            }
+        }];
     }
 }
 
@@ -396,15 +439,15 @@
 
 - (void)home:(HMHome *)home didAddService:(HMService *)service toServiceGroup:(HMServiceGroup *)group
 {
-    if ([self _hasListeners:@"didAddService"]) {
-        [self fireEvent:@"didAddService"];
+    if ([self _hasListeners:@"didAddServiceToServiceGroup"]) {
+        [self fireEvent:@"didAddServiceToServiceGroup"];
     }
 }
 
 - (void)home:(HMHome *)home didRemoveService:(HMService *)service fromServiceGroup:(HMServiceGroup *)group
 {
-    if ([self _hasListeners:@"didRemoveService"]) {
-        [self fireEvent:@"didRemoveService"];
+    if ([self _hasListeners:@"didRemoveServiceFromServiceGroup"]) {
+        [self fireEvent:@"didRemoveServiceFromServiceGroup"];
     }
 }
 
@@ -431,50 +474,62 @@
 
 - (void)home:(HMHome *)home didUpdateActionsForActionSet:(HMActionSet *)actionSet
 {
-    if ([self _hasListeners:@"didFindNewAccessory"]) {
-        [self fireEvent:@"homeDidUpdateName"];
+    if ([self _hasListeners:@"didUpdateActionsForActionSet"]) {
+        [self fireEvent:@"didUpdateActionsForActionSet"];
     }
 }
 
 - (void)home:(HMHome *)home didAddTrigger:(HMTrigger *)trigger
 {
     if ([self _hasListeners:@"didAddTrigger"]) {
-        [self fireEvent:@"didAddTrigger"];
+        [self fireEvent:@"didAddTrigger" withObject:@{
+            @"trigger": @{@"name": trigger.name, @"uniqueIdentifier": trigger.uniqueIdentifier}
+        }];
     }
 }
 
 - (void)home:(HMHome *)home didRemoveTrigger:(HMTrigger *)trigger
 {
     if ([self _hasListeners:@"didRemoveTrigger"]) {
-        [self fireEvent:@"didRemoveTrigger"];
+        [self fireEvent:@"didRemoveTrigger"withObject:@{
+            @"trigger": @{@"name": trigger.name, @"uniqueIdentifier": trigger.uniqueIdentifier}
+        }];
     }
 }
 
 - (void)home:(HMHome *)home didUpdateNameForTrigger:(HMTrigger *)trigger
 {
     if ([self _hasListeners:@"didUpdateNameForTrigger"]) {
-        [self fireEvent:@"didUpdateNameForTrigger"];
+        [self fireEvent:@"didUpdateNameForTrigger" withObject:@{
+            @"trigger": @{@"name": trigger.name, @"uniqueIdentifier": trigger.uniqueIdentifier}
+        }];
     }
 }
 
 - (void)home:(HMHome *)home didUpdateTrigger:(HMTrigger *)trigger
 {
-    if ([self _hasListeners:@"didFindNewAccessory"]) {
-        [self fireEvent:@"homeDidUpdateName"];
+    if ([self _hasListeners:@"didUpdateTrigger"]) {
+        [self fireEvent:@"didUpdateTrigger" withObject:@{
+            @"trigger": @{@"name": trigger.name, @"uniqueIdentifier": trigger.uniqueIdentifier}
+        }];
     }
 }
 
 - (void)home:(HMHome *)home didUnblockAccessory:(HMAccessory *)accessory
 {
-    if ([self _hasListeners:@"didUpdateNameForTrigger"]) {
-        [self fireEvent:@"didUpdateNameForTrigger"];
+    if ([self _hasListeners:@"didUnblockAccessory"]) {
+        [self fireEvent:@"didUnblockAccessory" withObject:@{
+            @"accessory": [[TiHomekitAccessoryProxy alloc] _initWithPageContext:[self pageContext] andAccessory:accessory]
+        }];
     }
 }
 
 - (void)home:(HMHome *)home didEncounterError:(NSError*)error forAccessory:(HMAccessory *)accessory
 {
-    if ([self _hasListeners:@"didEncounterError"]) {
-        [self fireEvent:@"didEncounterError"];
+    if ([self _hasListeners:@"didEncounterErrorForAccessory"]) {
+        [self fireEvent:@"didEncounterErrorForAccessory" withObject:@{
+            @"accessory": [[TiHomekitAccessoryProxy alloc] _initWithPageContext:[self pageContext] andAccessory:accessory]
+        }];
     }
 }
 
