@@ -124,14 +124,18 @@
 - (void)homeManager:(HMHomeManager *)manager didAddHome:(HMHome *)home
 {
     if ([self _hasListeners:@"didAddHome"]) {
-        [self fireEvent:@"didAddHome" withObject:@{@"home": @{@"uniqueIdentifier": home.uniqueIdentifier.UUIDString}}];
+        [self fireEvent:@"didAddHome" withObject:@{
+            @"home": [[TiHomekitHomeProxy alloc] _initWithPageContext:[self pageContext] andHome:home] forKey:@"home"]
+        }];
     }
 }
 
 - (void)homeManager:(HMHomeManager *)manager didRemoveHome:(HMHome *)home
 {
     if ([self _hasListeners:@"didRemoveHome"]) {
-        [self fireEvent:@"didRemoveHome" withObject:@{@"home": @{@"uniqueIdentifier": home.uniqueIdentifier.UUIDString}}];
+        [self fireEvent:@"didRemoveHome" withObject:@{
+            @"home": [[TiHomekitHomeProxy alloc] _initWithPageContext:[self pageContext] andHome:home] forKey:@"home"]
+        }];
     }
 }
 
