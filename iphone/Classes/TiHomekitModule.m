@@ -125,7 +125,7 @@
 {
     if ([self _hasListeners:@"didAddHome"]) {
         [self fireEvent:@"didAddHome" withObject:@{
-            @"home": [[TiHomekitHomeProxy alloc] _initWithPageContext:[self pageContext] andHome:home] forKey:@"home"]
+            @"home": [[TiHomekitHomeProxy alloc] _initWithPageContext:[self pageContext] andHome:home]
         }];
     }
 }
@@ -134,7 +134,7 @@
 {
     if ([self _hasListeners:@"didRemoveHome"]) {
         [self fireEvent:@"didRemoveHome" withObject:@{
-            @"home": [[TiHomekitHomeProxy alloc] _initWithPageContext:[self pageContext] andHome:home] forKey:@"home"]
+            @"home": [[TiHomekitHomeProxy alloc] _initWithPageContext:[self pageContext] andHome:home]
         }];
     }
 }
