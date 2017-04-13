@@ -9,6 +9,7 @@
 #import "TiBase.h"
 #import "TiHost.h"
 #import "TiUtils.h"
+#import "TiHomekitHomeProxy.h"
 
 @implementation TiHomekitModule
 
@@ -52,7 +53,7 @@
     KrollCallback *callback;
     
     ENSURE_ARG_AT_INDEX(name, args, 0, NSString);
-    ENSURE_ARG_AT_INDEX(callback, args, 0, KrollCallback);
+    ENSURE_ARG_AT_INDEX(callback, args, 1, KrollCallback);
     
     __weak TiHomekitModule *weakSelf = self;
 
@@ -63,7 +64,7 @@
                           if (error != nil) {
                               [event setObject:[error localizedDescription] forKey:@"error"];
                           } else {
-                              [event setObject:@{@"uniqueIdentifier": home.uniqueIdentifier.UUIDString} forKey:@"home"];
+                              [event setObject:[[TiHomekitHomeProxy alloc] _initWithPageContext:[self pageContext] andHome:home] forKey:@"home"];
                           }
                           
                           NSArray *invocation = [NSArray arrayWithObjects:event, nil];
@@ -74,31 +75,15 @@
 
 - (void)removeHome:(id)args
 {
-    NSString *uuid;
+    TiHomekitHomeProxy *home;
     KrollCallback *callback;
     
-    ENSURE_ARG_AT_INDEX(uuid, args, 0, NSString);
-    ENSURE_ARG_AT_INDEX(callback, args, 0, KrollCallback);
-    
-    HMHome *selectedHome = nil;
-    
-    for (HMHome *home in [[self homeManager] homes]) {
-        if ([[[home uniqueIdentifier] UUIDString] isEqualToString:uuid]) {
-            selectedHome = home;
-        }
-    }
-    
-    if (selectedHome == nil) {
-        NSDictionary *event = @{@"success": NUMBOOL(NO), @"error": @"Home not found!"};
-        NSArray *invocation = [NSArray arrayWithObjects:event, nil];
-        
-        [callback call:invocation thisObject:self];
-        return;
-    }
+    ENSURE_ARG_AT_INDEX(home, args, 0, TiHomekitHomeProxy);
+    ENSURE_ARG_AT_INDEX(callback, args, 1, KrollCallback);
     
     __weak TiHomekitModule *weakSelf = self;
 
-    [[self homeManager] removeHome:selectedHome
+    [[self homeManager] removeHome:[home home]
                  completionHandler:^(NSError *error) {
                      NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:@{@"success": NUMBOOL(error == nil)}];
         
@@ -113,31 +98,15 @@
 
 - (void)updatePrimaryHome:(id)args
 {
-    NSString *uuid;
+    TiHomekitHomeProxy *home;
     KrollCallback *callback;
     
-    ENSURE_ARG_AT_INDEX(uuid, args, 0, NSString);
-    ENSURE_ARG_AT_INDEX(callback, args, 0, KrollCallback);
-    
-    HMHome *selectedHome = nil;
-    
-    for (HMHome *home in [[self homeManager] homes]) {
-        if ([[[home uniqueIdentifier] UUIDString] isEqualToString:uuid]) {
-            selectedHome = home;
-        }
-    }
-    
-    if (selectedHome == nil) {
-        NSDictionary *event = @{@"success": NUMBOOL(NO), @"error": @"Home not found!"};
-        NSArray *invocation = [NSArray arrayWithObjects:event, nil];
-        
-        [callback call:invocation thisObject:self];
-        return;
-    }
+    ENSURE_ARG_AT_INDEX(home, args, 0, TiHomekitHomeProxy);
+    ENSURE_ARG_AT_INDEX(callback, args, 1, KrollCallback);
     
     __weak TiHomekitModule *weakSelf = self;
 
-    [[self homeManager] updatePrimaryHome:selectedHome
+    [[self homeManager] updatePrimaryHome:[home home]
                         completionHandler:^(NSError *error) {
                             NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:@{@"success": NUMBOOL(error == nil)}];
                             

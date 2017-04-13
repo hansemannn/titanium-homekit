@@ -42,6 +42,11 @@ Also ensure that the HomeKit- and location usage permissions are set in the tiap
 <string>HMCatalog needs access top your HomeKit devices.</string>
 ```
 
+## Example
+- [x] app.js - Adding new homes, making a home primary
+- [x] accessoryBrowser - Browsing accessories already added to your home
+- [ ] Feel free to provide more examples!
+
 ## Supported API's
 
 ### Top-Module

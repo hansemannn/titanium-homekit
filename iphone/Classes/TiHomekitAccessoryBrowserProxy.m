@@ -16,6 +16,8 @@
         _browser = [[HMAccessoryBrowser alloc] init];
         _browser.delegate = self;
     }
+    
+    return _browser;
 }
 
 #pragma mark Public API's
