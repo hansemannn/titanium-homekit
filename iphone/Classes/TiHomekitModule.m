@@ -119,6 +119,17 @@
                         }];
 }
 
+- (NSArray<TiHomekitHomeProxy *> *)homes
+{
+  NSMutableArray *homes = [NSMutableArray arrayWithCapacity:[[[self homeManager] homes] count]];
+  
+  for (HMHome *home in [[self homeManager] homes]) {
+    [homes addObject:[[TiHomekitHomeProxy alloc] _initWithPageContext:self.pageContext andHome:home]];
+  }
+  
+  return homes;
+}
+
 #pragma mark Delegates
 
 - (void)homeManager:(HMHomeManager *)manager didAddHome:(HMHome *)home

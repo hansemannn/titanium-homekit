@@ -57,6 +57,10 @@ Also ensure that the HomeKit- and location usage permissions are set in the tiap
 - [x] `updatePrimaryHome`
 - [x] `createAccessoryBrowser`
 
+#### Properties
+
+- [x] `homes`
+
 #### Events
 - [x] `didAddHome`
 - [x] `didRemoveHome`

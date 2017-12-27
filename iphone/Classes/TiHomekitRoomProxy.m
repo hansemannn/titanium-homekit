@@ -33,7 +33,7 @@
 
 - (NSArray *)accessories
 {
-    NSMutableArray *result = [NSMutableArray arrayWithCapacity:[_room accessories]];
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:[[_room accessories] count]];
     
     for (HMAccessory *accessory in [_room accessories]) {
         [result addObject:[[TiHomekitAccessoryProxy alloc] _initWithPageContext:[self pageContext] andAccessory:accessory]];
